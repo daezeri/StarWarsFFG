@@ -1,87 +1,85 @@
 # StarWarsFFG
 
-This is an implementation of the [Fantasy Flight Games Star Wars](https://www.fantasyflightgames.com/en/starwarsrpg/) roleplaying system for [Foundry Virtual Tabletop](https://foundryvtt.com/).
+Ceci est une implémentation du jeu de rôle  [Star Wars de Fantasy Flight Games](http://www.fantasyflightgames.fr/jeux/collection/star_wars_aux_confins_de_lempire/) pour le programme [Foundry Virtual Tabletop](https://foundryvtt.com/).
 
-Read this document in another language : [Français](https://github.com/StarWarsFoundryVTT/StarWarsFFG/blob/master/README-fr.md)
+# Prérequis
 
-# Requirements
+Ce système a besoin du module [Special Dice Roller](https://foundry-vtt-community.github.io/wiki/Community-Modules/#special-dice-roller) pour lancer les dés et évaluer les résultats.
+Ce module est disponible dans la bibliothèque de modules intégré au logiciel. Après l'avoir installé, vous aurez besoin de l'activer dans le monde. [GitHub](https://github.com/BernhardPosselt/foundryvtt-special-dice-roller)
 
-The system requires the [Special Dice Roller](https://foundry-vtt-community.github.io/wiki/Community-Modules/#special-dice-roller) Module to Roll the dice and calculate the results.
-This is most easily available from the in-game Module browser. After installing it you will need to activate it on your world. [GitHub](https://github.com/BernhardPosselt/foundryvtt-special-dice-roller)
+# Installation
 
-# Installing
+## Installation du système de jeu Star Wars FFG
 
-## Installing Star Wars FFG game system
-
-1. Open Foundry VTT
-2. Go to the "Game Systems" Tab
-3. Click the "Install System" button
-4. Copy the Following link into the "Manifest URL" section:
+1. Lancer Foundry VTT
+2. Aller dans la tabulation "Systèmes de Jeu"
+3. Cliquer sur le bouton "Installer un Système de jeu"
+4. Copier le lien suivant dans le champ "URL du Manifest":
    https://raw.githubusercontent.com/StarWarsFoundryVTT/StarWarsFFG/master/system.json
-5. Click Install, after a few seconds the system should be installed.
-6. Install (if not already done) "Special Dice Roller" module, see below for details.
+5. Cliquer sur Installation, après quelques secondes le système devrait être installé.
+6. Installer (si ce n'est pas déja fait) le module "Special Dice Roller", voir en-dessous pour les détails.
 
-## Installing Special Dice Roller module
+## Installation du module "Special Dice Roller"
 
-1. Go to "Add-on Modules" Tab
-2. Click the "Install Module" button
-3. In the search field, type "Special"
-4. Press the "Install" button for the "Special Dice Roller" module.
+1. Aller dans la tabualtion "Modules"
+2. Cliquer sur le bouton "Installer un Module"
+3. Dans le champ de recherche, taper "Special"
+4. Appuyer sur le bouton "Installation" pour le module "Special Dice Roller".
 
-# Contributing
+# Contribuer
 
-Please see [CONTRIBUTING.md](https://github.com/StarWarsFoundryVTT/StarWarsFFG/blob/dev/CONTRIBUTING.md).
+Veuillez consulter [CONTRIBUTING.md](https://github.com/StarWarsFoundryVTT/StarWarsFFG/blob/dev/CONTRIBUTING.md).
 
-# To-do
+# A Faire
 
-See our current production goals and progress [here](https://github.com/StarWarsFoundryVTT/StarWarsFFG/projects/1).
+Voyez nos objectifs de productions et nos progés [ici](https://github.com/StarWarsFoundryVTT/StarWarsFFG/projects/1).
 
-# Changelog
+# Journal des modifications
 
-- 23/06/2020 - Cstadther - Bug fix # 154 - Added damage add to damage characteristic for melee weapons.  Added modifier calculations with damage for melee/brawl weapons.
-- 23/06/2020 - Cstadther - Bug fix # 155 part 2 - Added attributes to the template.json structure for forcepower and specializations
-- 23/06/2020 - Cstadther - Bug fix # 155 - Force talents from compendium do no have attributes field, until they are imported into the world from the compendium
-- 23/06/2020 - Cstadther - Bug fix # 152 - Ship silhouette size
+- 23/06/2020 - Cstadther - Correction de bug # 154 - Rajouté la différenciation de types de dégats pour les armes de mélée (Dégâts rajoutés)Intégré ces modifications dans le calcul des dégâts de l'arme (en complément de la vigeur).
+- 23/06/2020 - Cstadther - Correction de bug # 155 part 2 - Added attributes to the template.json structure for forcepower and specializations
+- 23/06/2020 - Cstadther - Correction de bug # 155 - Force talents from compendium do no have attributes field, until they are imported into the world from the compendium
+- 23/06/2020 - Cstadther - Correction de bug # 152 - Ship silhouette size
 - 22/06/2020 - Cstadther - Added setting to disable Soak Autocalculation
 - 22/06/2020 - Cstadther - Enhancement - Data Imported error handling and async importing.
 - 21/06/2020 - Cstadther - Added Armor Import
 - 21/06/2020 - Cstadther - Added Weapon Import
 - 21/06/2020 - Cstadther - Added compendium item updates to talents and force powers, so that the import will update the data correctly.
-- 21/06/2020 - Cstadther - Add Gear Import, plus 0.6.3 bug fix for compendium structure change
+- 21/06/2020 - Cstadther - Add Gear Import, plus 0.6.3 Correction de bug for compendium structure change
 - 21/06/2020 - Esrin - Reworked Token HUD behaviour to allow for core functionality to behave properly with FFG style wounds / strain values.
 - 21/06/2020 - Cstadther - Add Force Power Upgrade Cost to force power sheet.
 - 21/06/2020 - Cstadther - Update Force Power Import - Removes unused rows for force powers that do not untilize them (ex Heal/Harm)
-- 21/06/2020 - Cstadther - Bug fix #126 - Clicking embedded journal entries triggering editor also
-- 21/06/2020 - Cstadther - Bug fix #138 - CSS fix to specialization connectors
+- 21/06/2020 - Cstadther - Correction de bug #126 - Clicking embedded journal entries triggering editor also
+- 21/06/2020 - Cstadther - Correction de bug #138 - CSS fix to specialization connectors
 - 20/06/2020 - Cstadther - Added additional OggDude symbol handling to enhance imported text
 - 20/06/2020 - Cstadther - Added force power import from OggDude Data Set
-- 20/06/2020 - Cstadther - Bug fix - Data importer mis-named variable
-- 19/06/2020 - Cstadther - Bug fix #123 - localization of change characteristic dialog.
-- 19/06/2020 - Cstadther - Bug fix for console error where pack index has not been populated.
-- 19/06/2020 - Cstadther - Bug fix for talent upgrades not adding up correctly
+- 20/06/2020 - Cstadther - Correction de bug - Data importer mis-named variable
+- 19/06/2020 - Cstadther - Correction de bug #123 - localization of change characteristic dialog.
+- 19/06/2020 - Cstadther - Correction de bug for console error where pack index has not been populated.
+- 19/06/2020 - Cstadther - Correction de bug for talent upgrades not adding up correctly
 - 18/06/2020 - Cstadther - First pass as Talent Import from OggDude Data Set
 - 17/06/2020 - Cstadther - Added force talent checkbox to talent data, update specialization sheet rendering to include it.
 - 17/06/2020 - Cstadther - Added Adversary Sheet, which hides everything for non-owner except picture, name, and species.  Name is in the title bar and can't easily be changed.
 - 17/06/2020 - Esrin - Localised all system settings.
 - 17/06/2020 - Esrin - Added new Player Character List Mode system setting that determines how the Group Manager lists player characters.
 - 17/06/2020 - Esrin - Added 'equipped' toggle to Armour in character inventory display. Only equipped armour will apply its soak value.
-- 17/06/2020 - Cstadther - Bug fix - Width of Characteristic Selector
-- 17/06/2020 - Cstadther - Bug fix #60 - Dice localization
+- 17/06/2020 - Cstadther - Correction de bug - Width of Characteristic Selector
+- 17/06/2020 - Cstadther - Correction de bug #60 - Dice localization
 - 17/06/2020 - Cstadther - Big fix #60 - Dice localization
 - 17/06/2020 - Esrin - Added limited player view to the Group Manager tool.
 - 17/06/2020 - Esrin - Made skill sorting by localised name an optional setting in System Settings, defaults to off.
 - 17/06/2020 - Esrin - Fixed localised skill sorting for Knowledge skill types.
 - 17/06/2020 - Cstadther - Enhancement #91, Specialization Color Difference between Active and Passive
-- 16/06/2020 - Cstadther - Bug fix for 2-way binding.
-- 16/06/2020 - Cstadther - Bug fix for #90, add talent cost in specialization tree.
-- 16/06/2020 - Cstadther - Bug fix for #97, specialization talent click display.
+- 16/06/2020 - Cstadther - Correction de bug for 2-way binding.
+- 16/06/2020 - Cstadther - Correction de bug for #90, add talent cost in specialization tree.
+- 16/06/2020 - Cstadther - Correction de bug for #97, specialization talent click display.
 - 16/06/2020 - Cstadther - Styled characteristic change dialog, and added localized values.
 - 14/06/2020 - Cstadther - Added functionality to change characteristic associated to skill.
-- 14/06/2020 - Cstadther - Bug fix for #87 (min/max values for skills and characteristics)
-- 14/06/2020 - Cstadther - Bug fix in Character Sheet PrepareData.
-- 14/06/2020 - Cstadther - Bug fix for item sheet rendering, more responsive design by removing set height on items.
-- 14/06/2020 - Esrin - Bug fix for significant performance issues with synthetic actors containing specialisation items.
-- 14/06/2020 - Cstadther - Bug fix for #92, adding scroll bar to talent/force boxes.
+- 14/06/2020 - Cstadther - Correction de bug for #87 (min/max values for skills and characteristics)
+- 14/06/2020 - Cstadther - Correction de bug in Character Sheet PrepareData.
+- 14/06/2020 - Cstadther - Correction de bug for item sheet rendering, more responsive design by removing set height on items.
+- 14/06/2020 - Esrin - Correction de bug for significant performance issues with synthetic actors containing specialisation items.
+- 14/06/2020 - Cstadther - Correction de bug for #92, adding scroll bar to talent/force boxes.
 - 13/06/2020 - Cstadther - Added hook and text replace to add dice symbols to journal entries.
 - 13/06/2020 - Esrin - Added 4 extra talent slots to the specialisation trees to match sourcebook examples.
 - 13/06/2020 - Esrin - Added localisation to the talent activations on specialisation sheet.
@@ -121,7 +119,7 @@ See our current production goals and progress [here](https://github.com/StarWars
 - 03/06/2020 - CStadther - Restyled vehicle weapon and attachment sheets.
 - 03/06/2020 - Esrin - Bugfix to minion sheet groupskill display.
 - 02/06/2020 - Esrin - Sheet styling tweaks.
-- 02/06/2020 - Esrin - Bug fixes to minion sheet.
+- 02/06/2020 - Esrin - Correction de buges to minion sheet.
 - 02/06/2020 - CStadther - Continued restyling vehicle sheet.
 - 02/06/2020 - ForjaSalvaje - Spanish language translation.
 - 02/06/2020 - Esrin - Some styling tweaks and fixes to the minion sheet skills display as suggested by Mandaar.
@@ -140,7 +138,7 @@ See our current production goals and progress [here](https://github.com/StarWars
 - 29/05/2020 - Esrin - Minor bugfix to vehicle sheet, various fields will now accept string values to allow for from-to values as requested by Alex | HDScurox.
 - 28/05/2020 - Esrin - Brought the Minion sheet inventory in line with the latest Character sheet changes. Added talents to Minion sheet. Fixed a minor bug with group skill calculations (thanks Alex | HDScurox for the bug report).
 - 25/05/2020 - Esrin - Character sheet tweaks. Continued improvements to the inventory display in advance of equipable item support.
-- 22/05/2020 - Esrin - Minor bug fixes and tweaks, compatibility check with FVTT 0.6.0 stable release.
+- 22/05/2020 - Esrin - Minor Correction de buges and tweaks, compatibility check with FVTT 0.6.0 stable release.
 - 18/05/2020 - alfarobl - Tweak to dice display orders to match the chat order, kindly provided by alfarobl.
 - 18/05/2020 - Esrin - A very hacky method has been introduced to allow the built in FoundryVTT combat tracker to roll initiative using FFG dice results. The resulting number is made up of successes and advantages. For example 1 success and 2 advantage would result in 1.02 for the initiative tracker. Warning, there might be bugs with this solution! Initiative can be switched between Vigilance and Cool via the System Settings section of the world configuration.
 - 13/05/2020 - Esrin - Continued sheet design tweaks.
