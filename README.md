@@ -2,8 +2,8 @@
 
 This is an implementation of the [Fantasy Flight Games Star Wars](https://www.fantasyflightgames.com/en/starwarsrpg/) roleplaying system for [Foundry Virtual Tabletop](https://foundryvtt.com/).
 
-For support on this game system : Discord [The Foundry](https://discord.gg/bNyxuk9) #starwars-ffg
-Read this document in another language : [Français](https://github.com/StarWarsFoundryVTT/StarWarsFFG/blob/master/README-fr.md)
+- For support on this game system : Discord [The Foundry](https://discord.gg/bNyxuk9) #starwars-ffg
+- Read this document in another language : [Français](https://github.com/StarWarsFoundryVTT/StarWarsFFG/blob/master/README-fr.md)
 
 # Requirements
 

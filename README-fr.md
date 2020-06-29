@@ -2,9 +2,9 @@
 
 Ceci est une implémentation du jeu de rôle  [Star Wars de Fantasy Flight Games](http://www.fantasyflightgames.fr/jeux/collection/star_wars_aux_confins_de_lempire/) pour le programme [Foundry Virtual Tabletop](https://foundryvtt.com/).
 
-Pour le support de ce systeme de jeu : Discord [The Foundry](https://discord.gg/bNyxuk9) #starwars-ffg
-Pour le support de la communauté Francaise : Discord [La Fonderie](https://discord.gg/pPSDNJk) #starwars-ffg
-Lire ce document dans une autre langue : [English](https://github.com/StarWarsFoundryVTT/StarWarsFFG/blob/master/README.md)
+- Pour le support de ce systeme de jeu : Discord [The Foundry](https://discord.gg/bNyxuk9) #starwars-ffg
+- Pour le support de la communauté Francaise : Discord [La Fonderie](https://discord.gg/pPSDNJk) #starwars-ffg
+- Lire ce document dans une autre langue : [English](https://github.com/StarWarsFoundryVTT/StarWarsFFG/blob/master/README.md)
 
 # Prérequis
 
