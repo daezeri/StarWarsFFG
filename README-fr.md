@@ -85,45 +85,45 @@ Voyez nos objectifs de productions et nos progés [ici](https://github.com/StarW
 - 14/06/2020 - Cstadther - Correction de bug dans la fonction PrepareData de la feuille de personnage.
 - 14/06/2020 - Cstadther - Correction de bug pour l'affichage des items, design plus réactif en enlevant la hauteure fixe établie.
 - 14/06/2020 - Esrin - Correction de bug pour pas mal de soucis de performances dût a des faux acteurs contenant des objets de spécialisations.
-- 14/06/2020 - Cstadther - Correction de bug #92, intégration d'un scrollbar dans les boôtes de dialogue des talents et des forces.
-- 13/06/2020 - Cstadther - Added hook and text replace to add dice symbols to journal entries.
-- 13/06/2020 - Esrin - Added 4 extra talent slots to the specialisation trees to match sourcebook examples.
-- 13/06/2020 - Esrin - Added localisation to the talent activations on specialisation sheet.
-- 13/06/2020 - Esrin - QoL improvements to specialisations to keep them synced up with any changes to linked talent descriptions or activations.
-- 13/06/2020 - Esrin - Restored individual embedded talents to character sheets to allow for talents without associated specialisations (such as for rivals and nemesis).
-- 13/06/2020 - Esrin - Bugfix to force power description display area.
-- 12/06/2020 - Cstadther - Added Specializations Trees, utilizing drag and drop talents. Only for characters.
-- 12/06/2020 - Esrin - Completed all initial Group Manager functionality and added last localisation hooks.
-- 12/06/2020 - Cstadther - Added popout editor and dice symbol rendering for force powers. Updated popout editor to specify height/width/left/top.
-- 12/06/2020 - Cstadther - Added popout editor for specials and dice symbol rendering in descriptions and specials
-- 12/06/2020 - Esrin - Added warning on startup if Special-Dice-Roller module is not installed and activated.
-- 12/06/2020 - Esrin - First pass on the group sheet. Now automatically populates with player characters, can open character sheets, change initiative mode and use the destiny pool. Other functionality under construction.
-- 10/06/2020 - Cstadther - Readded Force Pool to Talent Tab
-- 10/06/2020 - CStadther - Buxfix for Force Power Description field.
-- 09/06/2020 - CStadther - Added drag-drop transfer of weapon, armour and gear items between owned character sheets.
-- 08/06/2020 - CStadther - Added force power trees and associated view on the character sheets.
-- 07/06/2020 - Esrin - Began localisation of Group Manager popup.
-- 07/06/2020 - Esrin - Added new localisation for modifier types.
-- 07/06/2020 - Esrin - Added new localisation for talent activations.
-- 07/06/2020 - Esrin - Fixed localisation on character, minion and vehicle sheets for weapon range and firing arc display in inventory.
-- 07/06/2020 - Jaxxa - Modify Wound / Strain tracking to be compatible with resource bars.
-- 06/06/2020 - Jaxxa - Added Minion sheet calculating number of minions alive and reduce their skills as they die.
-- 05/06/2020 - CStadther - Added select2 libraries for better dropdowns.
-- 05/06/2020 - CStadther - Added Critical Injury and Critical Hit item types, along with associated display areas on character and vehicle sheets.
-- 05/06/2020 - CStadther - Standardised localisation hooks for all langs.
-- 05/06/2020 - Esrin - Removed legacy Critical Injury rolltable.
-- 04/06/2020 - Esrin - Completed full transition to SASS. Removed old swffg.css file and ported all CSS logic into relevant SASS files.
-- 04/06/2020 - HDScurox - Updated German language file.
-- 04/06/2020 - ForjaSalvaje - Updated Spanish language file.
-- 03/06/2020 - CStadther - Added localisation for all `swffg-config.js` values.
-- 03/06/2020 - Esrin - Tweaked sensor range dropdown values.
-- 03/06/2020 - CStadther - Fixed positioning issue with tool tips on vehicle sheet.
-- 03/06/2020 - CStadther - Restyled bottom of vehicle biography section.
-- 03/06/2020 - CStadther - Added localisation for skill names.
-- 03/06/2020 - HDScurox - Updated German language file.
-- 03/06/2020 - Esrin - Implemented scroll position saving when actor sheet elements are updated. No more popping back to the top of the skills list every time you make a change!
-- 03/06/2020 - CStadther - Restyled vehicle weapon and attachment sheets.
-- 03/06/2020 - Esrin - Bugfix to minion sheet groupskill display.
+- 14/06/2020 - Cstadther - Correction de bug #92, intégration d'un scrollbar dans les boites de dialogue des talents et des forces.
+- 13/06/2020 - Cstadther - Rajouta un hook et le remplacement du texte pour rajouter les symboles de des dans les Journaux.
+- 13/06/2020 - Esrin - Rajouta 4 points de talent supplémentaire a l'arbre de spécialisation pour correspondre aux exemples du livre de regles.
+- 13/06/2020 - Esrin - Rajouta la localisation lies aux talents sur la feuille de specialisation.
+- 13/06/2020 - Esrin - Améliorations QoL des spécialisations pour les garder synchronises avec des changements dans les descriptions et les activations des talents lies.
+- 13/06/2020 - Esrin - Restaura le systeme de talents individuels sur les feuilles de personnage pour permettre le rajout de talents non-associe a une specialisation (rivaux, nemesis par exemple)
+- 13/06/2020 - Esrin - Correction de bug du champ de description des pouvoirs de force.
+- 12/06/2020 - Cstadther - Rajouta les arbres de spécialisation, en utilisant le systeme de glisse-depose. Seulemen tpour les personnages.
+- 12/06/2020 - Esrin - Fini la premiere implementation du gestionnaire de groupe et rajoute les derniers hooks de localisation.
+- 12/06/2020 - Cstadther - Rajouta l'editeur externe et le rendu des symbols des dés. Améliora l'éditeur pour spécifier la hauter/largeur/gauche et haut.
+- 12/06/2020 - Cstadther - Rajouta l'editeur externe pour les specialisations et le rendu des symboles.
+- 12/06/2020 - Esrin - Rajouta des messages d'alerte au demarrage si le module 'Special-Dice-Roller' n'est pas installe et activé.
+- 12/06/2020 - Esrin - Première passe sur la feuille de groupe. Rajoute automatiquement les personnages joueurs, permet d'ouvrir leurs feuills, changer le mode d'initiative et utiliser les points de destin. D'autres fonctionalites en cours.
+- 10/06/2020 - Cstadther - Réintégra les points de force dans l'onglet des talents.
+- 10/06/2020 - CStadther - Correction de bug pour le champ de description des pouvoirs de force.
+- 09/06/2020 - CStadther - Rajouta la fonction glisser-deposer sur les armes, armures et l'equipement entre acteurs.
+- 08/06/2020 - CStadther - Rajouta les pouvoirs arbres des pouvoirs de force et les vues associes dans les feuilles de personnage.
+- 07/06/2020 - Esrin - Debut de localisation de la fenetre de gestion de groupe.
+- 07/06/2020 - Esrin - Rajouta de nouvelles options de localisation pour les types de modificateur.
+- 07/06/2020 - Esrin - Ajouta de nouvelles localisations pour les talents.
+- 07/06/2020 - Esrin - Repara la localisation sur les feuilles des personnages, sbires et vehicules pour la distance des armes et l'orientation des armes.
+- 07/06/2020 - Jaxxa - Modifia les systemes de seuil de blessure et de stress pour etre compatible avec les barres de ressources.
+- 06/06/2020 - Jaxxa - Rajouta des automatisations a la feuille de personnage des sbires pour calculer le nombre de minions vivant et reduit leurs competences quand ils meurent.
+- 05/06/2020 - CStadther - Integra les librairies select2 libraries pour de meilleurs dropdowns.
+- 05/06/2020 - CStadther - Integra les types d'objet pour les Blessures Critiques et les Coups Critiques, ainsi que leurs zones dedies dans les feuilles de personnages des vehicules et des personnages.
+- 05/06/2020 - CStadther - Standardisation de tout les hook de localisation pour toutes les langues.
+- 05/06/2020 - Esrin - Enleva les tables legacie de Blessure Critiques.
+- 04/06/2020 - Esrin - Completa la transition complete a SASS, enleva les anciens fichiers swffg.css et porta toute la logique CSS dans les bons fichiers SASS.
+- 04/06/2020 - HDScurox - Mise a jour du fichier de langue Allemand.
+- 04/06/2020 - ForjaSalvaje - Mise a jour du fichier de langue Espagnole.
+- 03/06/2020 - CStadther - Integra la localisation pour toutes les valeurs dans `swffg-config.js`.
+- 03/06/2020 - Esrin - Modifications aux valeurs de la distance des senseurs.
+- 03/06/2020 - CStadther - Repara les soucis de position sur les tool tips des feuilles de vehicules.
+- 03/06/2020 - CStadther - Transforma la partie inoccupe du bas dans la section biographie des vehicules.
+- 03/06/2020 - CStadther - Integra la localisation pour tout les noms de competences.
+- 03/06/2020 - HDScurox - Mise a jour de la localisation Allemande.
+- 03/06/2020 - Esrin - Integra l'implementation de la position du scroll pour conserver la position sur la feuille de personnage quand des elements sont rajoutes sur les feuilles de personnages des acteurs. Ca ne remonte plus chaque fois que tu fais un changement!
+- 03/06/2020 - CStadther - Refit la stylisation des feuilles de personnages des vehicules.
+- 03/06/2020 - Esrin - Correction de bug sur l'affichage des competences des feuilles de personnages des sbires.
 - 02/06/2020 - Esrin - Sheet styling tweaks.
 - 02/06/2020 - Esrin - Correction de buges to minion sheet.
 - 02/06/2020 - CStadther - Continued restyling vehicle sheet.
