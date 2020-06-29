@@ -40,6 +40,7 @@ Voyez nos objectifs de productions et nos progés [ici](https://github.com/StarW
 
 # Journal des modifications
 
+- 29/06/2020 - ezeri - Localisation Francaise etendue dans la documentation (rajout de README-fr.md)
 - 29/06/2020 - Cstadther - Rajout de l'option pour créer un log au moment de l'import
 - 29/06/2020 - Cstadther - Rajout de la fonction d'import des images pour les armes / armures / equipement depuis les donnees de OggDude
 - 24/06/2020 - Esrin - Correction de bug #160 & #159 - Limité l'utilisation des feuilles de personnages Adversaires aux acteurs de type "character".
