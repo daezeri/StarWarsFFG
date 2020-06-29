@@ -2,6 +2,10 @@
 
 Ceci est une implémentation du jeu de rôle  [Star Wars de Fantasy Flight Games](http://www.fantasyflightgames.fr/jeux/collection/star_wars_aux_confins_de_lempire/) pour le programme [Foundry Virtual Tabletop](https://foundryvtt.com/).
 
+Pour le support de ce systeme de jeu : Discord [The Foundry](https://discord.gg/bNyxuk9) #starwars-ffg
+Pour le support de la communauté Francaise : Discord [La Fonderie](https://discord.gg/pPSDNJk) #starwars-ffg
+Lire ce document dans une autre langue : [English](https://github.com/StarWarsFoundryVTT/StarWarsFFG/blob/master/README.md)
+
 # Prérequis
 
 Ce système a besoin du module [Special Dice Roller](https://foundry-vtt-community.github.io/wiki/Community-Modules/#special-dice-roller) pour lancer les dés et évaluer les résultats.
@@ -36,50 +40,52 @@ Voyez nos objectifs de productions et nos progés [ici](https://github.com/StarW
 
 # Journal des modifications
 
-- 23/06/2020 - Cstadther - Correction de bug # 154 - Rajouté la différenciation de types de dégats pour les armes de mélée (Dégâts rajoutés)Intégré ces modifications dans le calcul des dégâts de l'arme (en complément de la vigeur).
-- 23/06/2020 - Cstadther - Correction de bug # 155 part 2 - Added attributes to the template.json structure for forcepower and specializations
-- 23/06/2020 - Cstadther - Correction de bug # 155 - Force talents from compendium do no have attributes field, until they are imported into the world from the compendium
-- 23/06/2020 - Cstadther - Correction de bug # 152 - Ship silhouette size
-- 22/06/2020 - Cstadther - Added setting to disable Soak Autocalculation
-- 22/06/2020 - Cstadther - Enhancement - Data Imported error handling and async importing.
-- 21/06/2020 - Cstadther - Added Armor Import
-- 21/06/2020 - Cstadther - Added Weapon Import
-- 21/06/2020 - Cstadther - Added compendium item updates to talents and force powers, so that the import will update the data correctly.
-- 21/06/2020 - Cstadther - Add Gear Import, plus 0.6.3 Correction de bug for compendium structure change
-- 21/06/2020 - Esrin - Reworked Token HUD behaviour to allow for core functionality to behave properly with FFG style wounds / strain values.
-- 21/06/2020 - Cstadther - Add Force Power Upgrade Cost to force power sheet.
-- 21/06/2020 - Cstadther - Update Force Power Import - Removes unused rows for force powers that do not untilize them (ex Heal/Harm)
-- 21/06/2020 - Cstadther - Correction de bug #126 - Clicking embedded journal entries triggering editor also
-- 21/06/2020 - Cstadther - Correction de bug #138 - CSS fix to specialization connectors
-- 20/06/2020 - Cstadther - Added additional OggDude symbol handling to enhance imported text
-- 20/06/2020 - Cstadther - Added force power import from OggDude Data Set
-- 20/06/2020 - Cstadther - Correction de bug - Data importer mis-named variable
-- 19/06/2020 - Cstadther - Correction de bug #123 - localization of change characteristic dialog.
-- 19/06/2020 - Cstadther - Correction de bug for console error where pack index has not been populated.
-- 19/06/2020 - Cstadther - Correction de bug for talent upgrades not adding up correctly
-- 18/06/2020 - Cstadther - First pass as Talent Import from OggDude Data Set
-- 17/06/2020 - Cstadther - Added force talent checkbox to talent data, update specialization sheet rendering to include it.
-- 17/06/2020 - Cstadther - Added Adversary Sheet, which hides everything for non-owner except picture, name, and species.  Name is in the title bar and can't easily be changed.
-- 17/06/2020 - Esrin - Localised all system settings.
-- 17/06/2020 - Esrin - Added new Player Character List Mode system setting that determines how the Group Manager lists player characters.
-- 17/06/2020 - Esrin - Added 'equipped' toggle to Armour in character inventory display. Only equipped armour will apply its soak value.
-- 17/06/2020 - Cstadther - Correction de bug - Width of Characteristic Selector
-- 17/06/2020 - Cstadther - Correction de bug #60 - Dice localization
-- 17/06/2020 - Cstadther - Big fix #60 - Dice localization
-- 17/06/2020 - Esrin - Added limited player view to the Group Manager tool.
-- 17/06/2020 - Esrin - Made skill sorting by localised name an optional setting in System Settings, defaults to off.
-- 17/06/2020 - Esrin - Fixed localised skill sorting for Knowledge skill types.
-- 17/06/2020 - Cstadther - Enhancement #91, Specialization Color Difference between Active and Passive
-- 16/06/2020 - Cstadther - Correction de bug for 2-way binding.
-- 16/06/2020 - Cstadther - Correction de bug for #90, add talent cost in specialization tree.
-- 16/06/2020 - Cstadther - Correction de bug for #97, specialization talent click display.
-- 16/06/2020 - Cstadther - Styled characteristic change dialog, and added localized values.
-- 14/06/2020 - Cstadther - Added functionality to change characteristic associated to skill.
-- 14/06/2020 - Cstadther - Correction de bug for #87 (min/max values for skills and characteristics)
-- 14/06/2020 - Cstadther - Correction de bug in Character Sheet PrepareData.
-- 14/06/2020 - Cstadther - Correction de bug for item sheet rendering, more responsive design by removing set height on items.
-- 14/06/2020 - Esrin - Correction de bug for significant performance issues with synthetic actors containing specialisation items.
-- 14/06/2020 - Cstadther - Correction de bug for #92, adding scroll bar to talent/force boxes.
+- 24/06/2020 - Esrin - Correction de bug #160 & #159 - Limité l'utilisation des feuilles de personnages Adversaires aux acteurs de type "character".
+- 24/06/2020 - Esrin - Correction de bug #161 - Intégré la vérification qu'une armure est portée pour le calcul de l'encombrance.
+- 23/06/2020 - Cstadther - Correction de bug # 154 - Rajouté la différenciation de types de dégats pour les armes de mélée (Dégâts rajoutés) Intégré ces modifications dans le calcul des dégâts de l'arme (en complément de la vigeur).
+- 23/06/2020 - Cstadther - Correction de bug # 155 partie 2 - Rajouté des attributs dans le template.json structure pour les pouvoirs de force et les specializations
+- 23/06/2020 - Cstadther - Correction de bug # 155 - Les talents de force du compendium n'ont pas de champ d'attributes jusqu'à ce qu'ils soient importés dans le monde depuis le compendium.
+- 23/06/2020 - Cstadther - Correction de bug # 152 - Taille des silhouette des vaisseaux.
+- 22/06/2020 - Cstadther - Rajouta une option pour désactiver le calcul automatique de l'encaissement.
+- 22/06/2020 - Cstadther - Amélioration - Gestion des erreurs a l'import des datas, et import asyncrhone.
+- 21/06/2020 - Cstadther - Rajout de l'import des armures.
+- 21/06/2020 - Cstadther - Rajout de l'import des armes.
+- 21/06/2020 - Cstadther - Rajouta la mise a jour des items présent dans le compendium, de façon à ce que l'import puisse mettre aà jour correctement.
+- 21/06/2020 - Cstadther - Intégra l'import de l'équipement, correction de bug avec la version 0.6.3 lié au changement de structure des compendiums.
+- 21/06/2020 - Esrin - Retravailla le comportement du HUD pour que les fonctionalités core marchent avec la gestion des seuils de blessur et de stress de FFG.
+- 21/06/2020 - Cstadther - Intégra le coût d'améliorations aux fiches de pouvoir de force.
+- 21/06/2020 - Cstadther - Mise à jour Import de pouvoir de force - Suppression des rangées inutiles pour les pouvoirs de force qui ne les utilisent pas (ex. Soin/Blessure)
+- 21/06/2020 - Cstadther - Correction de bug #126 - Cliquer sur un journal integre (dans une autre page) déclenche maintenant l'editeur aussi.
+- 21/06/2020 - Cstadther - Correction de bug #138 - Fix CSS pour les connecteurs dans les spécialisations.
+- 20/06/2020 - Cstadther - Intégra la gestion des symboles de OggDude pour améliorer le texte importé.
+- 20/06/2020 - Cstadther - Rajoute l'import des pouvoirs de force depuis OggDude.
+- 20/06/2020 - Cstadther - Correction de bug - Variable mal nomée dans l'importer.
+- 19/06/2020 - Cstadther - Correction de bug #123 - Intégra la valeur localisée dans le dialogue de changement de caractéristiques.
+- 19/06/2020 - Cstadther - Correction de bug pour l'erreure consle quand l'index du pack n'avait pas encore été généré.
+- 19/06/2020 - Cstadther - Correction de bug pour les rangs de talents qui ne se cumulait pas correctement.
+- 18/06/2020 - Cstadther - Première passe a l'Import des Talents depuis les données de OggDude.
+- 17/06/2020 - Cstadther - Rajouta une case "Talent de Force" aux talents, intégration dans les feuilles de spécialisation.
+- 17/06/2020 - Cstadther - Création feuille des Adversaires qui cache tout pour les non-owner sauf l'image, le nom et l'espèce. Le nom est dans le titre du Dialogue et ne peut pas facilement être changé.
+- 17/06/2020 - Esrin - Localisation de tout les paramêtres systèmes.
+- 17/06/2020 - Esrin - Rajouta un nouveau mode pour lister les joueurs dans le gestionnaire de groupes pour les gens qui partagent une session.
+- 17/06/2020 - Esrin - Intégra l'option 'équipé' dans la partie des armures de l'inventaire du personnage. Seul l'armuer équipée appliquera sa valeur d'encaissement.
+- 17/06/2020 - Cstadther - Correction de bug - Largeur du dialogue de séléction des caractéristiques.
+- 17/06/2020 - Cstadther - Correction de bug #60 - Localization des dés.
+- 17/06/2020 - Cstadther - Correction de bug #60 - Localization des dés.
+- 17/06/2020 - Esrin - Intégra une vue limitée pour les joueurs dans le système de gestion des groupes.
+- 17/06/2020 - Esrin - Fit en sorte que le tri alphabétique des compétences soit optionnel. Par défaut c'est désactivé.
+- 17/06/2020 - Esrin - Répara la localisation des compétences pour les compétences de type Connaissances.
+- 17/06/2020 - Cstadther - Amélioration #91, Différence de couleur pour les talents dans les arbres de spécialisation entre Actif et Passif.
+- 16/06/2020 - Cstadther - Correction de bug vis à vis du lien bi-directionnel talents <-> spécialisation
+- 16/06/2020 - Cstadther - Correction de bug #90, intégra le coût des talents dans les arbres de spécialisation.
+- 16/06/2020 - Cstadther - Correction de bug #97, Réparation de l'apercu des talents quand on clique dessus.
+- 16/06/2020 - Cstadther - Création du dialogue de changement de caratéristique, et intégration des valeurs localisés.
+- 14/06/2020 - Cstadther - Rajouté la fonctionalité de change la caractéristque associe a une compétence.
+- 14/06/2020 - Cstadther - Correction de bug #87 Valeur min/max des compétences et des caractéristiques
+- 14/06/2020 - Cstadther - Correction de bug dans la fonction PrepareData de la feuille de personnage.
+- 14/06/2020 - Cstadther - Correction de bug pour l'affichage des items, design plus réactif en enlevant la hauteure fixe établie.
+- 14/06/2020 - Esrin - Correction de bug pour pas mal de soucis de performances dût a des faux acteurs contenant des objets de spécialisations.
+- 14/06/2020 - Cstadther - Correction de bug #92, intégration d'un scrollbar dans les boôtes de dialogue des talents et des forces.
 - 13/06/2020 - Cstadther - Added hook and text replace to add dice symbols to journal entries.
 - 13/06/2020 - Esrin - Added 4 extra talent slots to the specialisation trees to match sourcebook examples.
 - 13/06/2020 - Esrin - Added localisation to the talent activations on specialisation sheet.
