@@ -1,3 +1,5 @@
+import ImportHelpers from "./import-helpers.js";
+
 /**
  * A specialized form used to pop out the editor.
  * @extends {FormApplication}
@@ -42,7 +44,16 @@ export default class DataImporter extends FormApplication {
   activateListeners(html) {
     super.activateListeners(html);
 
+    $(`<span class="debug"><label><input type="checkbox" /> Generate Log</label></span>`).insertBefore("#data-importer header a");
+    
     html.find(".dialog-button").on("click",this._dialogButton.bind(this));
+  }
+
+  _importLog = [];
+  _importLogger (message) {
+    if ($(".debug input:checked").length > 0) {
+      this._importLog.push(`[${(new Date()).getTime()}] ${message}`);
+    }
   }
 
   async _dialogButton(event) {
@@ -81,10 +92,13 @@ export default class DataImporter extends FormApplication {
 
     if(action === "import") {
       console.debug('Starwars FFG - Importing Data Files');
+      this._importLogger(`Starting import`);
       
       const importFiles = $("input:checkbox[name=imports]:checked").map(function(){return { file : $(this).val(), label : $(this).data("name"), type : $(this).data("type"), itemtype : $(this).data("itemtype") } }).get()
 
       const selectedFile = $("#import-file").val();
+      this._importLogger(`Using ${selectedFile} for import source`);
+
       const zip = await fetch(`/${selectedFile}`) 
       .then(function (response) {                       
           if (response.status === 200 || response.status === 0) {
@@ -103,25 +117,19 @@ export default class DataImporter extends FormApplication {
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(data,"text/xml");
 
-        promises.push(this._handleGear(xmlDoc));
-        promises.push(this._handleWeapons(xmlDoc));
-        promises.push(this._handleArmor(xmlDoc));
+        promises.push(this._handleGear(xmlDoc, zip));
+        promises.push(this._handleWeapons(xmlDoc, zip));
+        promises.push(this._handleArmor(xmlDoc, zip));
         promises.push(this._handleTalents(xmlDoc));
         promises.push(this._handleForcePowers(xmlDoc, zip));
-
-        // this._handleGear(xmlDoc);
-        // this._handleWeapons(xmlDoc);
-        // await this._handleArmor(xmlDoc);
-        // await this._handleTalents(xmlDoc);
-        // await this._handleForcePowers(xmlDoc, zip);
       });
 
       await Promise.all(promises);
-
+      if ($(".debug input:checked").length > 0) {
+        saveDataToFile(this._importLog.join("\n"), "text/plain", "import-log.txt");
+      }
       this.close();
     }
-
-
 
     /** Future functionality to allow users to select files to import */
 
@@ -154,11 +162,12 @@ export default class DataImporter extends FormApplication {
   }
 
   async _handleTalents(xmlDoc) {
+    this._importLogger(`Starting Talent Import`);
     const talents = xmlDoc.getElementsByTagName("Talent");
     if(talents.length > 0) {
       let totalCount = talents.length;
       let currentCount = 0;
-
+      this._importLogger(`Beginning import of ${talents.length} talents`);
       $(".import-progress.talents").toggleClass("import-hidden");
       let pack = await this._getCompendiumPack('Item', `oggdude.Talents`);
 
@@ -170,6 +179,8 @@ export default class DataImporter extends FormApplication {
           const description = talent.getElementsByTagName("Description")[0]?.textContent;
           const ranked = talent.getElementsByTagName("Ranked")[0]?.textContent;
     
+          this._importLogger(`Start importing talent ${name}`);
+
           let activation = "Passive";
           
           switch (talent.getElementsByTagName("Activation")[0]?.textContent) {
@@ -194,8 +205,10 @@ export default class DataImporter extends FormApplication {
           const item = {
             name,
             type: "talent",
+            flags: {
+              importid: importkey
+            },
             data : {
-              importkey,
               description,
               ranks: {
                 ranked
@@ -213,28 +226,33 @@ export default class DataImporter extends FormApplication {
     
           if(!entry) {
             console.debug(`Starwars FFG - Importing Talent - Item`);
-            compendiumItem = new Item(item);  
+            compendiumItem = new Item(item, {temporary:true});  
+            this._importLogger(`New talent ${name} : ${JSON.stringify(compendiumItem)}`);
             pack.importEntity(compendiumItem);
           } else {
             console.debug(`Starwars FFG - Update Talent - Item`);
-            let updateData = this.buildUpdateData(item);
+            let updateData = ImportHelpers.buildUpdateData(item);
             updateData["_id"] = entry._id
+            this._importLogger(`Updating talent ${name} : ${JSON.stringify(updateData)}`);
             pack.updateEntity(updateData);
           }
           currentCount +=1 ;
           
           $(".talents .import-progress-bar").width(`${Math.trunc((currentCount / totalCount) * 100)}%`).html(`<span>${Math.trunc((currentCount / totalCount) * 100)}%</span>`);
+          this._importLogger(`End importing talent ${name}`);
         } catch (err) {
           console.error(`Starwars FFG - Error importing record : ${err.message}`);
           console.debug(err);
+          this._importLogger(`Error importing talent: ${JSON.stringify(err)}`);
         }
 
       }
     }
-    
+    this._importLogger(`Completed Talent Import`);
   }
 
   async _handleForcePowers(xmlDoc, zip) {
+    this._importLogger(`Starting Force Power Import`);
     const forceabilities = xmlDoc.getElementsByTagName("ForceAbility");
     if(forceabilities.length > 0) {
       $(".import-progress.force").toggleClass("import-hidden");
@@ -249,6 +267,7 @@ export default class DataImporter extends FormApplication {
 
       let totalCount = forcePowersFiles.length;
       let currentCount = 0;
+      this._importLogger(`Beginning import of ${forcePowersFiles.length} force powers`);
 
       await this.asyncForEach(forcePowersFiles, async (file) => {
         try {
@@ -268,6 +287,8 @@ export default class DataImporter extends FormApplication {
               }
             }
           }
+
+          this._importLogger(`Start importing force power ${fp.ForcePower.Name}`);
   
           // get the basic power informatio
           const importKey = fp.ForcePower.AbilityRows.AbilityRow[0].Abilities.Key[0];
@@ -367,31 +388,38 @@ export default class DataImporter extends FormApplication {
     
           if(!entry) {
             console.debug(`Starwars FFG - Importing Force Power - Item`);
-            compendiumItem = new Item(power);  
+            compendiumItem = new Item(power, {temporary:true});  
+            this._importLogger(`New force power ${fp.ForcePower.Name} : ${JSON.stringify(compendiumItem)}`);
             pack.importEntity(compendiumItem);
           } else {
             console.debug(`Starwars FFG - Updating Force Power - Item`);
-            let updateData = this.buildUpdateData(power);
+            let updateData = ImportHelpers.buildUpdateData(power);
             updateData["_id"] = entry._id
+            this._importLogger(`Updating force power ${fp.ForcePower.Name} : ${JSON.stringify(updateData)}`);
             pack.updateEntity(updateData);
           }
           currentCount +=1 ;
           
           $(".force .import-progress-bar").width(`${Math.trunc((currentCount / totalCount) * 100)}%`).html(`<span>${Math.trunc((currentCount / totalCount) * 100)}%</span>`);
+          this._importLogger(`End importing force power ${fp.ForcePower.Name}`);
+          
         } catch (err) {
           console.error(`Starwars FFG - Error importing record : ${err.message}`);
           console.debug(err);
         }
       });
     }
+    this._importLogger(`Completed Force Power Import`);
   }
 
-  async _handleGear(xmlDoc) {
+  async _handleGear(xmlDoc, zip) {
+    this._importLogger(`Starting Gear Import`);
     const gear = xmlDoc.getElementsByTagName("Gear");
    
     if(gear.length > 0) { 
       let totalCount = gear.length;
       let currentCount = 0;
+      this._importLogger(`Beginning import of ${gear.length} gear`)
 
       $(".import-progress.gear").toggleClass("import-hidden");
       let pack = await this._getCompendiumPack('Item', `oggdude.Gear`);
@@ -408,11 +436,15 @@ export default class DataImporter extends FormApplication {
           const encumbrance = item.getElementsByTagName("Encumbrance")[0]?.textContent;
           const type = item.getElementsByTagName("Type")[0]?.textContent;
 
+          this._importLogger(`Start importing gear ${name}`);
+
           const newItem = {
             name,
             type: "gear",
+            flags: {
+              importid: importkey
+            },
             data: {
-              importkey,
               description,
               encumbrance: {
                 value : encumbrance
@@ -426,37 +458,51 @@ export default class DataImporter extends FormApplication {
             }
           }
 
+          // does an image exist?
+          let imgPath = await ImportHelpers.getImageFilename(zip, "Equipment", "Gear", importkey);
+          if(imgPath) {
+            newItem.img = await ImportHelpers.importImage(imgPath.name, zip, pack);
+          }
+
           let compendiumItem;
           await pack.getIndex();
           let entry = pack.index.find(e => e.name === newItem.name);
 
           if(!entry) {
             console.debug(`Starwars FFG - Importing Gear - Item`);
-            compendiumItem = new Item(newItem);  
+            compendiumItem = new Item(newItem, {temporary: true});  
+            this._importLogger(`New gear ${name} : ${JSON.stringify(compendiumItem)}`);
             pack.importEntity(compendiumItem);
           } else {
             console.debug(`Starwars FFG - Updating Gear - Item`);
-            let updateData = this.buildUpdateData(newItem);
+            let updateData = ImportHelpers.buildUpdateData(newItem);
             updateData["_id"] = entry._id
+            this._importLogger(`Updating gear ${name} : ${JSON.stringify(updateData)}`);
             pack.updateEntity(updateData);
           }
           currentCount +=1 ;
 
           $(".gear .import-progress-bar").width(`${Math.trunc((currentCount / totalCount) * 100)}%`).html(`<span>${Math.trunc((currentCount / totalCount) * 100)}%</span>`);
+          this._importLogger(`End importing gear ${name}`);
         } catch (err) {
           console.error(`Starwars FFG - Error importing record : ${err.message}`);
           console.debug(err);
+          this._importLogger(`Error importing gear: ${JSON.stringify(err)}`);
         }
       }
     }
+
+    this._importLogger(`Completed Gear Import`);
   }
 
-  async _handleWeapons(xmlDoc) {
+  async _handleWeapons(xmlDoc, zip) {
+    this._importLogger(`Starting Weapon Import`);
     const weapons = xmlDoc.getElementsByTagName("Weapon");
    
     if(weapons.length > 0) { 
       let totalCount = weapons.length;
       let currentCount = 0;
+      this._importLogger(`Beginning import of ${weapons.length} weapons`)
 
       $(".import-progress.weapons").toggleClass("import-hidden");
       let pack = await this._getCompendiumPack('Item', `oggdude.Weapons`);
@@ -478,6 +524,8 @@ export default class DataImporter extends FormApplication {
           const skillkey = weapon.getElementsByTagName("SkillKey")[0]?.textContent;
           const range = weapon.getElementsByTagName("Range")[0]?.textContent;
           const hardpoints = weapon.getElementsByTagName("HP")[0]?.textContent;
+
+          this._importLogger(`Start importing weapon ${name}`);
 
           let skill = "";
 
@@ -516,8 +564,10 @@ export default class DataImporter extends FormApplication {
           let newItem = {
             name,
             type: "weapon",
+            flags: {
+              importid: importkey
+            },
             data: {
-              importkey,
               description,
               encumbrance : {
                 value : encumbrance
@@ -563,37 +613,50 @@ export default class DataImporter extends FormApplication {
             }
           }
 
+          // does an image exist?
+          let imgPath = await ImportHelpers.getImageFilename(zip, "Equipment", "Weapon", importkey);
+          if(imgPath) {
+            newItem.img = await ImportHelpers.importImage(imgPath.name, zip, pack);
+          }
+
           let compendiumItem;
           await pack.getIndex();
           let entry = pack.index.find(e => e.name === newItem.name);
 
           if(!entry) {
             console.debug(`Starwars FFG - Importing Weapon - Item`);
-            compendiumItem = new Item(newItem);  
+            compendiumItem = new Item(newItem, {temporary : true});  
+            this._importLogger(`New weapon ${name} : ${JSON.stringify(compendiumItem)}`);
             pack.importEntity(compendiumItem);
           } else {
             console.debug(`Starwars FFG - Updating Weapon - Item`);
-            let updateData = this.buildUpdateData(newItem);
+            let updateData = ImportHelpers.buildUpdateData(newItem);
             updateData["_id"] = entry._id
+            this._importLogger(`Updating weapon ${name} : ${JSON.stringify(updateData)}`);
             pack.updateEntity(updateData);
           }
           currentCount +=1 ;
 
           $(".weapons .import-progress-bar").width(`${Math.trunc((currentCount / totalCount) * 100)}%`).html(`<span>${Math.trunc((currentCount / totalCount) * 100)}%</span>`);
+          this._importLogger(`End importing weapon ${name}`);
         } catch (err) {
           console.error(`Starwars FFG - Error importing record : ${err.message}`);
           console.debug(err);
+          this._importLogger(`Error importing weapon: ${JSON.stringify(err)}`);
         }
       }
     }
+    this._importLogger(`Completed Weapon Import`);
   }
 
-  async _handleArmor(xmlDoc) {
+  async _handleArmor(xmlDoc, zip) {
+    this._importLogger(`Starting Armor Import`);
     const armors = xmlDoc.getElementsByTagName("Armor");
    
     if(armors.length > 0) { 
       let totalCount = armors.length;
       let currentCount = 0;
+      this._importLogger(`Beginning import of ${armors.length} armor`)
 
       $(".import-progress.armor").toggleClass("import-hidden");
       let pack = await this._getCompendiumPack('Item', `oggdude.Armor`);
@@ -613,11 +676,15 @@ export default class DataImporter extends FormApplication {
           const soak = armor.getElementsByTagName("Soak")[0]?.textContent;
           const hardpoints = armor.getElementsByTagName("HP")[0]?.textContent;
 
+          this._importLogger(`Start importing armor ${name}`);
+
           let newItem = {
             name,
             type : "armour",
+            flags: {
+              importid: importkey
+            },
             data : {
-              importkey,
               description,
               encumbrance : {
                 value : encumbrance
@@ -640,46 +707,62 @@ export default class DataImporter extends FormApplication {
             }
           }
 
+          // does an image exist?
+          let imgPath = await ImportHelpers.getImageFilename(zip, "Equipment", "Weapon", importkey);
+          if(imgPath) {
+            newItem.img = await ImportHelpers.importImage(imgPath.name, zip, pack);
+          }
+
           let compendiumItem;
           await pack.getIndex();
           let entry = pack.index.find(e => e.name === newItem.name);
 
           if(!entry) {
             console.debug(`Starwars FFG - Importing Armor - Item`);
-            compendiumItem = new Item(newItem);  
+            compendiumItem = new Item(newItem, {temporary : true});  
+            this._importLogger(`New armor ${name} : ${JSON.stringify(compendiumItem)}`);
             pack.importEntity(compendiumItem);
           } else {
             console.debug(`Starwars FFG - Updating Armor - Item`);
-            let updateData = this.buildUpdateData(newItem);
+            let updateData = ImportHelpers.buildUpdateData(newItem);
             updateData["_id"] = entry._id
+            this._importLogger(`Updating armor ${name} : ${JSON.stringify(updateData)}`);
             pack.updateEntity(updateData);
           }
           currentCount +=1 ;
 
           $(".armor .import-progress-bar").width(`${Math.trunc((currentCount / totalCount) * 100)}%`).html(`<span>${Math.trunc((currentCount / totalCount) * 100)}%</span>`);
+          this._importLogger(`End importing armor ${name}`);
         } catch (err) {
           console.error(`Starwars FFG - Error importing record : ${err.message}`);
           console.debug(err);
+          this._importLogger(`Error importing armor: ${JSON.stringify(err)}`);
         }
-
       }
     }
+    this._importLogger(`Completed Armor Import`);
   }
 
   async _getCompendiumPack(type, name) {
+    this._importLogger(`Checking for existing compendium pack ${name}`);
     let pack = game.packs.find(p => {
       return p.metadata.label === name
     });
     if(!pack) {
+      this._importLogger(`Compendium pack ${name} not found, creating new`);
       pack = await Compendium.create({ entity : type, label: name});
+    } else {
+      this._importLogger(`Existing compendium pack ${name} found`);
     }
 
     return pack;
   }
 
   _enableImportSelection(files, name) {
+    this._importLogger(`Checking zip file for ${name}`);
     Object.values(files).findIndex(file => {
       if(file.name.includes(`/${name}.xml`)) {
+        this._importLogger(`Found file ${file.name}`);
         $(`#import${name.replace(" ", "")}`).removeAttr("disabled").val(file.name);
         return true;
       }
@@ -694,29 +777,5 @@ export default class DataImporter extends FormApplication {
   };
 
 
-  buildUpdateData = (newItem) => {
-    let updateData = {};
-    for(let key in newItem.data) {
-      const recursiveObject = (itemkey, obj) => {
-        for(let objkey in obj) {
-          if(typeof obj[objkey] === "object") {
-            recursiveObject(`${itemkey}.${objkey}`, obj[objkey]);
-          } else {
-            if(obj[objkey]) {
-              const datakey = `data.${itemkey}.${objkey}`;
-              updateData[datakey] = obj[objkey];
-            }
-          }
-        }
-      }
-
-      if(typeof newItem.data[key] === "object") {
-        recursiveObject(key, newItem.data[key]);
-      } else {
-        const datakey = `data.${key}`;
-        updateData[datakey] = `${newItem.data[key]}`
-      }
-    }
-    return updateData
-  }
+  
 }
