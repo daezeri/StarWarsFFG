@@ -124,61 +124,61 @@ Voyez nos objectifs de productions et nos progés [ici](https://github.com/StarW
 - 03/06/2020 - Esrin - Integra l'implementation de la position du scroll pour conserver la position sur la feuille de personnage quand des elements sont rajoutes sur les feuilles de personnages des acteurs. Ca ne remonte plus chaque fois que tu fais un changement!
 - 03/06/2020 - CStadther - Refit la stylisation des feuilles de personnages des vehicules.
 - 03/06/2020 - Esrin - Correction de bug sur l'affichage des competences des feuilles de personnages des sbires.
-- 02/06/2020 - Esrin - Sheet styling tweaks.
-- 02/06/2020 - Esrin - Correction de buges to minion sheet.
-- 02/06/2020 - CStadther - Continued restyling vehicle sheet.
-- 02/06/2020 - ForjaSalvaje - Spanish language translation.
-- 02/06/2020 - Esrin - Some styling tweaks and fixes to the minion sheet skills display as suggested by Mandaar.
-- 02/06/2020 - Mandaar - French language translation.
-- 02/06/2020 - HDScurox - German language translation.
-- 02/06/2020 - CStadther - Continued restyling minion sheet.
-- 02/06/2020 - Esrin - Temporary display fixes to Minion and Vehicle sheets awaiting CStadther's eventual restyle.
-- 02/06/2020 - Esrin - Minor bugfix to character sheet, soak value set to disabled for auto-calculation, encumbrance max and current values swapped to correct fields and current set to disabled for auto-calculation.
-- 02/06/2020 - CStadther - Major sheet restyling
-- 02/06/2020 - Jaxxa - Added Icons in the Dice roller, visually indicating the dice types.
-- 31/05/2020 - Esrin - Work in progress on the group management GM tool. Destiny Pool now working (will reset on page refresh). Player Character list under construction.
-- 31/05/2020 - Esrin - Bugfix to localisation hook for Gear Quantity on Character Sheet (thanks Alex | HDScurox for the bug report).
-- 31/05/2020 - CStadther - Added SASS configuration using Gulp.
-- 31/05/2020 - CStadther - Minor bugfix on .item click listener to prevent console errors when .item class components with no related item sheet are clicked, such as tabs.
-- 31/05/2020 - CStadther - Added localization for character sheet.
-- 29/05/2020 - Esrin - Minor bugfix to vehicle sheet, various fields will now accept string values to allow for from-to values as requested by Alex | HDScurox.
-- 28/05/2020 - Esrin - Brought the Minion sheet inventory in line with the latest Character sheet changes. Added talents to Minion sheet. Fixed a minor bug with group skill calculations (thanks Alex | HDScurox for the bug report).
-- 25/05/2020 - Esrin - Character sheet tweaks. Continued improvements to the inventory display in advance of equipable item support.
-- 22/05/2020 - Esrin - Minor Correction de buges and tweaks, compatibility check with FVTT 0.6.0 stable release.
-- 18/05/2020 - alfarobl - Tweak to dice display orders to match the chat order, kindly provided by alfarobl.
-- 18/05/2020 - Esrin - A very hacky method has been introduced to allow the built in FoundryVTT combat tracker to roll initiative using FFG dice results. The resulting number is made up of successes and advantages. For example 1 success and 2 advantage would result in 1.02 for the initiative tracker. Warning, there might be bugs with this solution! Initiative can be switched between Vigilance and Cool via the System Settings section of the world configuration.
-- 13/05/2020 - Esrin - Continued sheet design tweaks.
-- 12/05/2020 - Esrin - Reworked actorsheet entities back down to a single entity with dynamic options based on actor.type. Now much easier to maintain in single place.
-- 12/05/2020 - Esrin - First pass at improvements to inventory display to show more info on hover of certain areas (hover name for description, hover special for full text, etc). Still much more styling and layout work needed for sheets in general.
-- 11/05/2020 - Esrin - First pass on some quality of life improvements to the inventory display (work in progress). Minor bugfixes.
-- 11/05/2020 - Esrin - Fixed bug on vehicle sheet that was preventing data entry to some fields.
-- 11/05/2020 - Esrin - Reworked the modifier tabs to be more foolproof and user friendly. Only Soak modifiers are calculated automatically at present. Automatic calculation of other stat / characteristic / skill modifiers is not a priority right now so putting on the backburner.
-- 11/05/2020 - Esrin - Improved vehicle sheet design to have Defence in fore, aft, port, starboard cross pattern.
-- 11/05/2020 - Esrin - Added Range, Skill, Firing Arc and Activation dropdowns to item and talent sheets where appropriate.
-- 11/05/2020 - Esrin - Added skills filter to character and minion sheets, allowing filtering by General, Combat and Knowledge.
-- 11/05/2020 - Esrin - Added career skills checkbox to character sheet.
-- 11/05/2020 - Esrin - Fixed Handling on vehicle sheet. Now displays a + for positive values.
-- 09/05/2020 - Esrin - Rollable table for Critical Injuries
-- 09/05/2020 - Esrin - Cleaned up items to just use one JS class and get dynamic template by type.
-- 09/05/2020 - Esrin - Built item sheet for ship weapons and ship attachments
-- 09/05/2020 - Esrin - Built character sheet for vehicles
-- 09/05/2020 - Esrin - Added data structure for ship weapons and ship attachments
-- 09/05/2020 - Esrin - Added data structure for vehicles (using Jaxxa's work as a template)
-- 09/05/2020 - Esrin - Added currency to characters
-- 09/05/2020 - Esrin - Derived encumbrance from item values.
-- 09/05/2020 - Esrin - Derived soak value from brawn, equipped armour, and modifiers on weapons, gear and talents as a test case for automation.
-- 08/05/2020 - Esrin - Extended Actor class to allow for calculated Minion stat values (wounds from unit wounds _ quantity, and skills from group skills _ quantity-1)
-- 08/05/2020 - Esrin - Added data structure for minions
-- 08/05/2020 - Esrin - Built character sheet for minions
-- 08/05/2020 - Esrin - Updated main character sheet to correctly display all three main item types, and talents.
-- 08/05/2020 - Esrin - Added data structure for talents
-- 08/05/2020 - Esrin - Updated main character sheet to show XP on all pages, and obligation types on Biography page.
-- 08/05/2020 - Esrin - Built very basic item sheets for the three main item types.
-- 08/05/2020 - Esrin - Added data structures for the three main item types, gear, weapons, armour.
-- 07/05/2020 - Esrin - Minor tweaks to the character sheet styling. Begun restructuring the underlying data structure in template.json to introduce best practices, avoid unnecessary duplication and prepare for the addition of new actor and item types.
-- 07/05/2020 - Esrin - First pass at character sheet styling. Next step, talents, items and derived modifiers.
-- 06/05/2020 - Esrin - Added "Rolling <skillname>" into the chat message for FFG dice rolls to show which skill the person was rolling on.
-- 06/05/2020 - Esrin - Added abbreviations (abrev) to characteristics, refactored skill display on ffg-actor-sheet.html to allow for linked characteristic abbreviations in display.
-- 06/05/2020 - Esrin - Updated to TabsV2 class in actor-sheet-ffg.js to avoid deprecation of Tabs class in future FoundryVTT versions.
-- 06/05/2020 - Esrin - Renamed remaining core files from Simple World Building to swffg naming scheme for consistency.
-- 06/05/2020 - Esrin - Removed old SimpleWorldBuilding dependencies and fixed breakages where necessary.
+- 02/06/2020 - Esrin - Modifications legeres sur les feuilles de styles.
+- 02/06/2020 - Esrin - Correctif de bugs sur la feuille des sbires.
+- 02/06/2020 - CStadther - Stylisation de le feuille des vehicules.
+- 02/06/2020 - ForjaSalvaje - Traduction Espagnol.
+- 02/06/2020 - Esrin - Modification de la stylisation et des correctifs sur les feuilles des sbires sur les suggestions de Mandaar.
+- 02/06/2020 - Mandaar - Localisation Francaise.
+- 02/06/2020 - HDScurox - Localisation Allemande.
+- 02/06/2020 - CStadther - Feuilles de stylisation des sbires.
+- 02/06/2020 - Esrin - Correctifs temporaire pour les feuilles des vehicules et des sbires en attendant la refonte de CStadther.
+- 02/06/2020 - Esrin - Correctifs mineurs aux feuilles de personnages, valeurs d'encaissement desactive pour le calcul automatique, les valeurs max et actuels d'encombrement sont remit dans les bons champs.
+- 02/06/2020 - CStadther - Refonte majeur des feuilles de style.
+- 02/06/2020 - Jaxxa - Rajout des icones dans la fenetre de lancer de dés.
+- 31/05/2020 - Esrin - Travail sur le systeme de gestion des groupes. La reserve de dés de destin fonctionne maintenant (se remettra a zero une fois la page actualisee). Liste des joueurs en cours.
+- 31/05/2020 - Esrin - Correctif sur les hooks de localisation pour la quantite d'equipement sur les feuilles de personnage (merci Alex | HDScurox d'avoir remonte le soucis).
+- 31/05/2020 - CStadther - Rajout du systeme de configuration SASS en utilisant Gulp.
+- 31/05/2020 - CStadther - Correctif mineur sur les evenments de bouton appuye sur les .item pour empecher des erreurs dans la console quand des .item non lites a la feuille de personnage sont declenches, tel les tabulations.
+- 31/05/2020 - CStadther - Integration de la localisation pour les feuilles de personnage.
+- 29/05/2020 - Esrin - Correctif mineur sur les feuilles des vehicules, divers champs accepteront des valeurs en string pour permettre des changements aller-retour comme demande par Alex | HDScurox.
+- 28/05/2020 - Esrin - Mis a jour la feuille de personnage des sbires pour incorporer les derniers changements fait sur les feuilles des personnages. Rajout des talents aux sbires. Correctif de bug mineur dans le calcul des competences de groupe(merci Alex | HDScurox de l'avoir remarque).
+- 25/05/2020 - Esrin - Modification des feuilles de personnages. Amelioration continues sur l'affichage de l'inventaire en preparation pour la possibilite d'eaquiper les objets.
+- 22/05/2020 - Esrin - Correctifs mineurs et ameliorations mineurs, verification de compatibilite avec la release FVTT 0.6.0.
+- 18/05/2020 - alfarobl - Amelioration de l'ordre d'affichage des des pour correspondre a l'ordre fait dans le chat, fourni aimablement par alfarobl.
+- 18/05/2020 - Esrin - Une methodologie extremement douteuse a ete introduit pour permettre au systeme de gestion des combats de FoudnryVTT de comprendre les systemes de lances de des de FFG. Le nombre est resultat est une operation mathemtique base sur les succes et les avantages. Par exemple 1 succes et 2 avantages donne la valeur 1.02 en initiative. Attention, il y aura peut-etre des soucis avec cette solution. L'initiative peut etre base sur Calme ou Sang-Froid grace aux options dans la configuration du monde.
+- 13/05/2020 - Esrin - Suite des modifications des feuilles de personnages.
+- 12/05/2020 - Esrin - Retravailla l'entite des feuilles de personnages pour etre une seule entitee avec des options dynamiques bases sur actor.type. Beaucoup plus simple a maintenir dans un seul endroit maintenant.
+- 12/05/2020 - Esrin - Premiere passe des amelioration de l'affichage de l'inventaire pour montrer plus d'information quand on passe la souris sur certaines wones (le nom donne la descruption, le champ special donne le text entier, etc...) Il reste encore beaucoup de travail sur les feuilles en general.
+- 11/05/2020 - Esrin - Premiere passe sur des ameliorations de Qualite de Vie pour l'affichage de l'inventaire (en cours). Correctifs de bugs mineurs.
+- 11/05/2020 - Esrin - Correctif de bug sur les feuilles de vehicules qui empechait l'ecriture de donnees dans certains champs.
+- 11/05/2020 - Esrin - Retravail des obglies des modificateurs pour etre plus sur et facile a utiliser pour l'utilisateur. Seul l'encaissement est calcule automatiquement pour l'instant. Le calcul automatique des autres stats / characteristiques / talents n'est pas une priorite actuellement, alors on va lever le pied sur le sujet.
+- 11/05/2020 - Esrin - Amelioration le design des feuilles des vehicules pour avoir la Defence a visible de tout les cotes dans une visualisation en croix.
+- 11/05/2020 - Esrin - Integra la Portee, le Talent, et l'ARc de tir, ainsi que l'activation des menu déroulants pour les items et pour les talents quand approprié.
+- 11/05/2020 - Esrin - Rajout du filtre des talents sur les personnages et les champs des sbires, ermettant un filtrage par "General", "Combat" et "Connaissances".
+- 11/05/2020 - Esrin - Integration d'une case a coche pour indiquer qu'une competence est de carriere.
+- 11/05/2020 - Esrin - Correctif sur le maniement sur les feuilles de vehicules. Affiche maintenant un + pour les valeurs positifs.
+- 09/05/2020 - Esrin - Nouvelle table pour les Blessures Critiques.
+- 09/05/2020 - Esrin - Nettoyage des items pour utiliser juste une classe JS et recuperer les templates dynamiques par type.
+- 09/05/2020 - Esrin - Elaboration des feuilles pour les armes des vehicules et pour les ameliorations des vehicules.
+- 09/05/2020 - Esrin - Creation feuille de personnage pour les vehicules.
+- 09/05/2020 - Esrin - Integration structure de donnee pour les armes des vaisseaux et pour les modificateurs des vaisseaux
+- 09/05/2020 - Esrin - Integration structure pour les vehicules (en utilisant le travail de Jaxxa's en tant que base)
+- 09/05/2020 - Esrin - Integration de l'argent pour les joueurs
+- 09/05/2020 - Esrin - Calcul de l'encombrement pour les objets
+- 09/05/2020 - Esrin - Calcul de la valeur d'encaissement base sur la vigeur, l'armure équipée et les modificateurs sur els armes, léquipement et les talents en tant que test pour l'automatisation.
+- 08/05/2020 - Esrin - Etendue la classe Actor pour permettre le calcule des statistiques des sbires (seuil de blessure base sur l'unite de blessure, et competences base sur les competences de groupe)
+- 08/05/2020 - Esrin - Rajout de la structure de donnees pour les sbires.
+- 08/05/2020 - Esrin - Creation de la feuille de personnage pour les sbires.
+- 08/05/2020 - Esrin - Mis a jour de la feuille de personnage principal pour montrer orrectement les 3 types d'items prinicipaux, ainsi que les talents.
+- 08/05/2020 - Esrin - Integration de la structure pour les talents.
+- 08/05/2020 - Esrin - Mise a jour de la feuille de personnage principal pour montrer l'XP sur toutes les pages, et l'obligation etc. uniquement sur la page biographie.
+- 08/05/2020 - Esrin - Mis en place d'une feuille de personnage tres simple pour les 3 types d'objets principaux.
+- 08/05/2020 - Esrin - Integration de la structure de donnees pour les 3 types d'items principayx (equipement, armes, et armures)
+- 07/05/2020 - Esrin - Modification mineur aux styles visuels de la feuille de personnage. Debut de restructuration de la structure de donnees soujacentes dans le fichier templates.json pour introduire les meilleures pratiques, en evitant des duplication inutiles de donnees et en preparation pour l'ajout de nouveaux acteurs et types d'objets.
+- 07/05/2020 - Esrin - Premiere passe sur les feuilles de styles de la feuille de personnage. Prochaine etape, talents, objets et les modificateurs derives.
+- 06/05/2020 - Esrin - Rajouta "En train de lancer <skillname>" dans la fenetre de discussion pour les lancés de dés pour montrer quelle compétence la personne est en train de lancer.
+- 06/05/2020 - Esrin - Rajouta une abbréviation aux caractéristiques, et refacorisation de la méthode d'affichage des compétences dans ffg-actor-sheet.html pour permettre a l'abbrevation des caractéristiques liés de s'afficher.
+- 06/05/2020 - Esrin - Mise à jour de la calsse TabsV2 dans actor-sheet-ffg.js pour eviter la depreciation de la classe de Tabs dans les versions futures de FoundryVTT.
+- 06/05/2020 - Esrin - Renomma les fichiers de base du systeme Simple World Building pour correspondre a la nomenclature de swffg.
+- 06/05/2020 - Esrin - Enleva les vieilles dépendances du systeme SimpleWorldBuilding et fit la reparation selon besoin.
