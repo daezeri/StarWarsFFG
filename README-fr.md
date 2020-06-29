@@ -40,6 +40,8 @@ Voyez nos objectifs de productions et nos progés [ici](https://github.com/StarW
 
 # Journal des modifications
 
+- 29/06/2020 - Cstadther - Rajout de l'option pour créer un log au moment de l'import
+- 29/06/2020 - Cstadther - Rajout de la fonction d'import des images pour les armes / armures / equipement depuis les donnees de OggDude
 - 24/06/2020 - Esrin - Correction de bug #160 & #159 - Limité l'utilisation des feuilles de personnages Adversaires aux acteurs de type "character".
 - 24/06/2020 - Esrin - Correction de bug #161 - Intégré la vérification qu'une armure est portée pour le calcul de l'encombrance.
 - 23/06/2020 - Cstadther - Correction de bug # 154 - Rajouté la différenciation de types de dégats pour les armes de mélée (Dégâts rajoutés) Intégré ces modifications dans le calcul des dégâts de l'arme (en complément de la vigeur).
